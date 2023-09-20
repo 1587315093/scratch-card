@@ -1,9 +1,9 @@
-import ScratchCard from "./components/ScratchCard";
+import { Demo1 } from "./demo";
 
 function App() {
   return (
     <>
-      <ScratchCard />
+      <Demo1 />
     </>
   );
 }
