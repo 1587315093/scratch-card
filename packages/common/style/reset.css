@@ -1,0 +1,82 @@
+/* reset.css */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles (bullets/numbers) */
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Remove default padding */
+body {
+  padding: 0;
+}
+
+/* Set core body defaults */
+body {
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+}
+
+/* Reset link styles */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Reset button styles */
+button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove outline on focus */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+/* Remove borders on inputs and buttons */
+input,
+button {
+  border: none;
+}
+
+/* Remove horizontal scrollbar */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Optionally add your own custom styles below this line */
