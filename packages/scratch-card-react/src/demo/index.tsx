@@ -16,4 +16,5 @@ const DemoBlock: DemoBlockProps = (props) => {
 };
 
 export * from "./demo1";
+export * from "./demo2";
 export default DemoBlock;

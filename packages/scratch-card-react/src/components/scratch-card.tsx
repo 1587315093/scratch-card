@@ -1,5 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { FC, ReactNode } from "react";
+import { useCanvasInit } from "../hook/useCanvas";
 import "./scratch-card.less";
 
 const classPrefix = "scratch-card";
@@ -21,28 +22,15 @@ const ScratchCard: FC<ScratchCardProps> = (p) => {
   const props = Object.assign(defaultProps, p);
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-
-  useEffect(() => {
-    initCanvas();
-  }, []);
-
-  const initCanvas = () => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const context = canvas?.getContext("2d");
-    if (!context) return;
-
-    canvas.width = props.width;
-    canvas.height = props.height;
-    context.fillStyle = props.BackgroundColor;
-    context.fillRect(0, 0, canvas.width, canvas.height);
-  };
+  useCanvasInit({
+    canvasRef,
+    ...props,
+  });
 
   return (
     <div
       className={classPrefix}
-      style={{ width: props.width, height: props.height }}
+      style={{ width: props.width, height: props.height, marginLeft: 20 }}
     >
       <canvas ref={canvasRef} className={`${classPrefix}-canvas`}></canvas>
       <div
