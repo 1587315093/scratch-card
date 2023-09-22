@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
 const useCanvasInit = (props: any) => {
-  const { canvasRef, width, height, BackgroundColor } = props;
+  const { canvasRef, width, height, coverColor } = props;
   const isScratching = useRef(false); // 是否正在刮
 
   useEffect(() => {
@@ -15,14 +15,26 @@ const useCanvasInit = (props: any) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    canvas.width = width;
+    canvas.height = height;
+
     const context = canvas?.getContext("2d");
     if (!context) return;
 
-    canvas.width = width;
-    canvas.height = height;
-    context.fillStyle = BackgroundColor;
-    context.fillRect(0, 0, canvas.width, canvas.height);
-    context.globalCompositeOperation = "destination-out";
+    if (props.coverImg) {
+      const img = new Image();
+      img.src = props.coverImg;
+      img.onload = () => {
+        console.log(img, "img");
+
+        context.drawImage(img, 0, 0);
+        context.globalCompositeOperation = "destination-out";
+      };
+    } else {
+      context.fillStyle = coverColor;
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      context.globalCompositeOperation = "destination-out";
+    }
 
     // bind event
     canvas.addEventListener("mousedown", scratchController.bind(null, true));

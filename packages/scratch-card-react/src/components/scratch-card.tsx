@@ -6,20 +6,21 @@ import "./scratch-card.less";
 const classPrefix = "scratch-card";
 
 type ScratchCardProps = {
+  children?: ReactNode;
+  coverImg?: string;
+  coverColor?: string;
   width?: number | string;
   height?: number | string;
-  BackgroundColor?: string;
-  children?: ReactNode;
 };
 
 const defaultProps = {
   width: 360,
   height: 360,
-  BackgroundColor: "#ddd",
+  coverColor: "#ddd",
 };
 
 const ScratchCard: FC<ScratchCardProps> = (p) => {
-  const props = Object.assign(defaultProps, p);
+  const props = { ...defaultProps, ...p };
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   useCanvasInit({
