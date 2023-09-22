@@ -1,17 +1,9 @@
-import { useEffect, useRef, useState } from "react";
-import type { FC, ReactNode } from "react";
-import { useCanvasInit } from "../hook/useCanvas";
+import { useRef } from "react";
+import { useCanvasInit } from "./hook/useCanvasInit";
+import type { ScratchCardProps } from "./type";
 import "./scratch-card.less";
 
 const classPrefix = "scratch-card";
-
-type ScratchCardProps = {
-  children?: ReactNode;
-  coverImg?: string;
-  coverColor?: string;
-  width?: number | string;
-  height?: number | string;
-};
 
 const defaultProps = {
   width: 360,
@@ -19,11 +11,12 @@ const defaultProps = {
   coverColor: "#ddd",
 };
 
-const ScratchCard: FC<ScratchCardProps> = (p) => {
+// 支持 ref
+const ScratchCard: ScratchCardProps = (p) => {
   const props = { ...defaultProps, ...p };
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  useCanvasInit({
+  const [, initDone] = useCanvasInit({
     canvasRef,
     ...props,
   });
@@ -38,7 +31,7 @@ const ScratchCard: FC<ScratchCardProps> = (p) => {
         className={`${classPrefix}-container`}
         style={{ width: props.width, height: props.height }}
       >
-        {props.children}
+        {initDone && props.children}
       </div>
     </div>
   );

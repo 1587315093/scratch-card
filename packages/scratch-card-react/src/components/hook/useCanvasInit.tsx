@@ -1,8 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { loadImage } from "@common/utils";
+import type { ScratchCardHookProps } from "../type";
 
-const useCanvasInit = (props: any) => {
-  const { canvasRef, width, height, coverColor } = props;
-  const isScratching = useRef(false); // 是否正在刮
+const useCanvasInit = (props: ScratchCardHookProps) => {
+  const { canvasRef, width, height, coverColor, coverImg } = props;
+  const isScratching = useRef(false);
+  const [initDone, setInitDone] = useState(false); // 网络图片加载有延迟，初始化完成在渲染底层dom
 
   useEffect(() => {
     initCanvas();
@@ -11,7 +14,7 @@ const useCanvasInit = (props: any) => {
     };
   }, []);
 
-  const initCanvas = () => {
+  const initCanvas = async () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -21,30 +24,26 @@ const useCanvasInit = (props: any) => {
     const context = canvas?.getContext("2d");
     if (!context) return;
 
-    if (props.coverImg) {
-      const img = new Image();
-      img.src = props.coverImg;
-      img.onload = () => {
-        console.log(img, "img");
-
-        context.drawImage(img, 0, 0);
-        context.globalCompositeOperation = "destination-out";
-      };
+    if (coverImg) {
+      const image = await loadImage(coverImg);
+      context.drawImage(image, 0, 0);
     } else {
       context.fillStyle = coverColor;
       context.fillRect(0, 0, canvas.width, canvas.height);
-      context.globalCompositeOperation = "destination-out";
     }
+    context.globalCompositeOperation = "destination-out";
 
     // bind event
     canvas.addEventListener("mousedown", scratchController.bind(null, true));
     canvas.addEventListener("touchstart", scratchController.bind(null, true));
 
     canvas.addEventListener("mousemove", handleScratch);
-    canvas.addEventListener("touchmove", handleScratch as any);
+    canvas.addEventListener("touchmove", handleScratch as () => void);
 
     canvas.addEventListener("mouseup", scratchController.bind(null, false));
     canvas.addEventListener("touchend", scratchController.bind(null, false));
+
+    setInitDone(true);
   };
 
   const terminateCanvas = () => {
@@ -58,14 +57,13 @@ const useCanvasInit = (props: any) => {
     );
 
     canvas.removeEventListener("mousemove", handleScratch);
-    canvas.removeEventListener("touchmove", handleScratch as any);
+    canvas.removeEventListener("touchmove", handleScratch as () => void);
 
     canvas.removeEventListener("mouseup", scratchController.bind(null, false));
     canvas.removeEventListener("touchend", scratchController.bind(null, false));
   };
   const handleScratch = (e: MouseEvent) => {
     if (!isScratching.current) return;
-
     e.preventDefault();
 
     const canvas = canvasRef.current;
@@ -74,8 +72,9 @@ const useCanvasInit = (props: any) => {
     if (!context) return;
 
     const canvasRect = canvas.getClientRects()[0];
-    const x = e instanceof MouseEvent ? e.pageX - canvasRect.x : 0;
-    const y = e instanceof MouseEvent ? e.pageY - canvasRect.y : 0;
+
+    const x = e.pageX - canvasRect.x;
+    const y = e.pageY - canvasRect.y;
 
     context.beginPath();
     context.arc(x, y, 20, 0, Math.PI * 2);
@@ -85,7 +84,7 @@ const useCanvasInit = (props: any) => {
     isScratching.current = scratching;
   };
 
-  return [isScratching.current];
+  return [isScratching.current, initDone];
 };
 
 export { useCanvasInit };
