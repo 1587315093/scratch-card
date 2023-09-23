@@ -11,7 +11,7 @@ const defaultProps = {
   coverColor: "#ddd",
 };
 
-// 支持 ref
+// todo:支持 ref
 const ScratchCard: ScratchCardProps = (p) => {
   const props = { ...defaultProps, ...p };
 
