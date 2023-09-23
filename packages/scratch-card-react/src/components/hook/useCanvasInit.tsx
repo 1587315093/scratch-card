@@ -73,8 +73,8 @@ const useCanvasInit = (props: ScratchCardHookProps) => {
 
     const canvasRect = canvas.getClientRects()[0];
 
-    const x = e.pageX - canvasRect.x;
-    const y = e.pageY - canvasRect.y;
+    const x = e.clientX - canvasRect.x;
+    const y = e.clientY - canvasRect.y;
 
     context.beginPath();
     context.arc(x, y, 20, 0, Math.PI * 2);
