@@ -1,6 +1,5 @@
 {
   "name": "scratch-card-react",
-  "private": true,
   "version": "1.0.0-alpha",
   "type": "module",
   "scripts": {
