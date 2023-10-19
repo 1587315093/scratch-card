@@ -1,5 +1,5 @@
 import DemoBlock from ".";
-import ScratchCard from "../components/scratch-card";
+import ScratchCard from "../component/scratch-card";
 import { IMG_LIST } from "@common/constant";
 
 function Demo3() {

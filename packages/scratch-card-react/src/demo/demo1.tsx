@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import DemoBlock from ".";
-import ScratchCard from "../components/scratch-card";
+import ScratchCard from "../component/scratch-card";
 
 function Demo1() {
   const canvasRef = useRef(null);

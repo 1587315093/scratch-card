@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { loadImage } from "@common/utils";
+// import { loadImage } from "@common/utils";
+import { loadImage } from "../../../../common/utils";
 import type { ScratchCardHookProps } from "../type";
 
 const useCanvasInit = (props: ScratchCardHookProps) => {

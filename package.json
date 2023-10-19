@@ -1,14 +1,19 @@
 {
   "name": "scratch-card",
   "description": "scratch-card-core",
+  "author": "Wing",
+  "license": "MIT",
   "scripts": {
     "dev:r": "pnpm --filter=scratch-card-react dev",
     "dev:v": "pnpm --filter=scratch-card-vue dev",
     "build:r": "pnpm --filter=scratch-card-react build",
     "build:v": "pnpm --filter=scratch-card-vue build"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/1587315093/scratch-card"
+  },
   "keywords": [],
-  "author": "1587315093@qq.com",
   "devDependencies": {
     "@types/node": "^20.6.3",
     "@typescript-eslint/eslint-plugin": "^6.0.0",

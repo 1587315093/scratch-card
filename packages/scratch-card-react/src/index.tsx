@@ -11,3 +11,6 @@ function App() {
 }
 
 export default App;
+
+
+export { ScratchCard } from "./component"
