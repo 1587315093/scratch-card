@@ -1,7 +1,7 @@
 {
   "name": "scratch-card-react",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.0-alpha",
   "type": "module",
   "scripts": {
     "dev": "vite",
