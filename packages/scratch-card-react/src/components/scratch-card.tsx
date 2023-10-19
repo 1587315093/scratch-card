@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef,forwardRef ,useImperativeHandle} from "react";
 import { useCanvasInit } from "./hook/useCanvasInit";
 import type { ScratchCardProps } from "./type";
 import "./scratch-card.less";
@@ -11,8 +11,7 @@ const defaultProps = {
   coverColor: "#ddd",
 };
 
-// todo:支持 ref
-const ScratchCard: ScratchCardProps = (p) => {
+const ScratchCard = forwardRef<unknown,ScratchCardProps>((p,ref) => {
   const props = { ...defaultProps, ...p };
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -20,6 +19,12 @@ const ScratchCard: ScratchCardProps = (p) => {
     canvasRef,
     ...props,
   });
+  
+  useImperativeHandle(ref,()=>({
+    canvasContainer:canvasRef.current,
+    initDone,
+  }))
+
 
   return (
     <div
@@ -35,6 +40,6 @@ const ScratchCard: ScratchCardProps = (p) => {
       </div>
     </div>
   );
-};
+});
 
 export default ScratchCard;

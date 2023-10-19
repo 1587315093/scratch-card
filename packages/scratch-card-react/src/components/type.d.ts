@@ -1,4 +1,4 @@
-import type { FC, PropsWithChildren, MutableRefObject } from "react";
+import type { FC, PropsWithChildren , MutableRefObject } from "react";
 
 type ScratchCardType = {
   coverColor: string;
@@ -6,13 +6,13 @@ type ScratchCardType = {
   height: number;
 };
 
-type ScratchCardProps = FC<
-  PropsWithChildren<
-    Partial<ScratchCardType> & {
-      coverImg?: string;
-    }
-  >
->;
+
+type ScratchCardProps =  PropsWithChildren<
+Partial<ScratchCardType> & {
+  coverImg?: string;
+}
+>
+
 type ScratchCardHookProps = Required<
   ScratchCardType & {
     canvasRef: MutableRefObject<HTMLCanvasElement | null>;
