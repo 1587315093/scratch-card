@@ -1,7 +1,7 @@
 import type { MutableRefObject } from 'react';
 import { useEffect, useRef, useState } from 'react';
-import type { ScratchCardType } from '..';
-import { loadImage } from '../../../utils';
+import type { ScratchCardType } from '../scratch-card';
+import { loadImage } from '../utils';
 
 type ScratchCardHookProps = Required<
   ScratchCardType & {

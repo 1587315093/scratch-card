@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react';
 import { forwardRef, useImperativeHandle, useRef } from 'react';
-import { useCardInit } from './hooks';
+import { useCardInit } from '../hooks';
 import './index.less';
 
 export type ScratchCardType = {
