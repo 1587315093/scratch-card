@@ -1,6 +1,6 @@
 {
   "name": "scratch-card-react",
-  "version": "0.0.1",
+  "version": "1.0.0-alpha",
   "description": "A react library developed with dumi",
   "license": "MIT",
   "module": "dist/index.js",
