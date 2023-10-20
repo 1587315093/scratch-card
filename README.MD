@@ -1,15 +1,43 @@
-<h1 style='text-align:center;'>ScratchCard</h1>
+# ScratchCard 刮刮卡（React版）
 
-<div style='text-align:center;'>支持 React 的刮刮卡组件，（Vue版计划中...）</div>
+[![NPM version](https://img.shields.io/npm/v/scratch-card-react.svg?style=flat)](https://npmjs.org/package/scratch-card-react)
+[![NPM downloads](http://img.shields.io/npm/dm/scratch-card-react.svg?style=flat)](https://npmjs.org/package/scratch-card-react)
 
-## 使用方式
-
-下载依赖
+## 使用
 
 ```bash
-npm i ******
+npm i scratch-card-react
 # or
-yarn ***
+yarn add scratch-card-react
 # or
-pnpm i *****
+pnpm i scratch-card-react
 ```
+
+## Options
+
+
+## 开发
+
+```bash
+# install dependencies
+$ pnpm install
+
+# develop library by docs demo
+$ pnpm start
+
+# build library source code
+$ pnpm run build
+
+# build library source code in watch mode
+$ pnpm run build:watch
+
+# build docs
+$ pnpm run docs:build
+
+# check your project for potential problems
+$ pnpm run doctor
+```
+
+## LICENSE
+
+MIT

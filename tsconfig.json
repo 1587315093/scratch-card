@@ -1,9 +1,16 @@
 {
-    "compilerOptions": {
-      "baseUrl": ".",
-      "paths": {
-        "@common/*": ["packages/common/*"],
-      }
-    },
-  }
-  
+  "compilerOptions": {
+    "strict": true,
+    "declaration": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "jsx": "react-jsx",
+    "baseUrl": "./",
+    "paths": {
+      "@@/*": [".dumi/tmp/*"],
+      "scratch-card-react": ["src"],
+      "scratch-card-react/*": ["src/*", "*"]
+    }
+  },
+  "include": [".dumirc.ts", "src/**/*", "demo"]
+}
