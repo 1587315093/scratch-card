@@ -50,6 +50,6 @@ $ pnpm run doctor
 MIT
 
 
-## todo
+## todo list
 
-1. 支持className
+
