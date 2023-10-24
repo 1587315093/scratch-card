@@ -6,3 +6,12 @@ export function loadImage(url: string): Promise<HTMLImageElement> {
     img.onerror = reject;
   });
 }
+
+export async function loadImageUrl(coverImg: any) {
+  if (coverImg instanceof Promise) {
+    const res = await coverImg;
+    return res.default;
+  } else {
+    return coverImg;
+  }
+}

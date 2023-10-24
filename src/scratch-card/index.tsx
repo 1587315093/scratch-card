@@ -3,22 +3,23 @@ import { forwardRef, useImperativeHandle, useRef } from 'react';
 import { useCardInit } from '../hooks';
 import './index.less';
 
+const classPrefix = 'scratch-card';
+
 export type ScratchCardType = {
   coverColor: string;
   width: number;
   height: number;
 };
+
 export type ScratchCardProps = PropsWithChildren<
   Partial<ScratchCardType> & {
-    coverImg?: string;
+    coverImg?: string | Promise<any>;
   }
 >;
 
-const classPrefix = 'scratch-card';
-
 const defaultProps = {
-  width: 360,
-  height: 360,
+  width: 240,
+  height: 120,
   coverColor: '#ddd',
 };
 
@@ -39,7 +40,7 @@ const ScratchCard = forwardRef<unknown, ScratchCardProps>((p, ref) => {
   return (
     <div
       className={classPrefix}
-      style={{ width: props.width, height: props.height, marginLeft: 20 }}
+      style={{ width: props.width, height: props.height }}
     >
       <canvas ref={canvasRef} className={`${classPrefix}-canvas`}></canvas>
       <div

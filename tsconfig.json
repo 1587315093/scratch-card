@@ -6,11 +6,12 @@
     "esModuleInterop": true,
     "jsx": "react-jsx",
     "baseUrl": "./",
+
     "paths": {
       "@@/*": [".dumi/tmp/*"],
       "scratch-card-react": ["src"],
       "scratch-card-react/*": ["src/*", "*"]
     }
   },
-  "include": [".dumirc.ts", "src/**/*", "demo"]
+  "include": [".dumirc.ts", "src/**/*", "./type.d.ts", "demo"]
 }

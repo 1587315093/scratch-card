@@ -1,14 +1,14 @@
 import type { MutableRefObject } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import type { ScratchCardType } from '../scratch-card';
-import { loadImage } from '../utils';
+import { loadImage, loadImageUrl } from '../utils';
 
 type ScratchCardHookProps = Required<
   ScratchCardType & {
     canvasRef: MutableRefObject<HTMLCanvasElement | null>;
   }
 > & {
-  coverImg?: string;
+  coverImg?: string | Promise<any>;
 };
 
 const useCardInit = (props: ScratchCardHookProps) => {
@@ -34,8 +34,9 @@ const useCardInit = (props: ScratchCardHookProps) => {
     if (!context) return;
 
     if (coverImg) {
-      const image = await loadImage(coverImg);
-      context.drawImage(image, 0, 0);
+      const url = await loadImageUrl(coverImg);
+      const image = await loadImage(url);
+      context.drawImage(image, 0, 0, width, height);
     } else {
       context.fillStyle = coverColor;
       context.fillRect(0, 0, canvas.width, canvas.height);
