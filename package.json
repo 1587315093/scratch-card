@@ -1,6 +1,6 @@
 {
   "name": "scratch-card-react",
-  "version": "1.0.5-alpha",
+  "version": "1.0.6-alpha",
   "description": "scratch-card-react",
   "license": "MIT",
   "module": "dist/index.js",

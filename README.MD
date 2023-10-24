@@ -2,15 +2,16 @@
 
 [![NPM version](https://img.shields.io/npm/v/scratch-card-react.svg?style=flat)](https://npmjs.org/package/scratch-card-react)
 [![NPM downloads](http://img.shields.io/npm/dm/scratch-card-react.svg?style=flat)](https://npmjs.org/package/scratch-card-react)
+[![GitHub](https://img.shields.io/github/license/1587315093/scratch-card)](https://github.com/1587315093/scratch-card)
 
 ## 使用
 
 ```bash
-npm i scratch-card-react
+npm install scratch-card-react
 # or
 yarn add scratch-card-react
 # or
-pnpm i scratch-card-react
+pnpm install scratch-card-react
 ```
 
 ## 属性
