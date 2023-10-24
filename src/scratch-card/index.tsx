@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import type { PropsWithChildren } from 'react';
 import { forwardRef, useImperativeHandle, useRef } from 'react';
 import { useCardInit } from '../hooks';
@@ -14,6 +15,11 @@ export type ScratchCardType = {
 export type ScratchCardProps = PropsWithChildren<
   Partial<ScratchCardType> & {
     coverImg?: string | Promise<any>;
+    classNames?: {
+      root?: string;
+      mask?: string;
+      body?: string;
+    };
   }
 >;
 
@@ -29,7 +35,10 @@ const ScratchCard = forwardRef<unknown, ScratchCardProps>((p, ref) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [, initDone] = useCardInit({
     canvasRef,
-    ...props,
+    width: props.width,
+    height: props.height,
+    coverColor: props.coverColor,
+    coverImg: props.coverImg,
   });
 
   useImperativeHandle(ref, () => ({
@@ -39,12 +48,18 @@ const ScratchCard = forwardRef<unknown, ScratchCardProps>((p, ref) => {
 
   return (
     <div
-      className={classPrefix}
+      className={classNames(classPrefix, props?.classNames?.root)}
       style={{ width: props.width, height: props.height }}
     >
-      <canvas ref={canvasRef} className={`${classPrefix}-canvas`}></canvas>
+      <canvas
+        ref={canvasRef}
+        className={classNames(`${classPrefix}-mask`, props.classNames?.mask)}
+      ></canvas>
       <div
-        className={`${classPrefix}-container`}
+        className={classNames(
+          `${classPrefix}-container`,
+          props.classNames?.body,
+        )}
         style={{ width: props.width, height: props.height }}
       >
         {initDone && props.children}

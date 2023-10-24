@@ -31,7 +31,16 @@ export default () => {
         <ScratchCard />
       </DemoBlock>
       <DemoBlock title="设置宽高和黄色蒙版与底部元素">
-        <ScratchCard width={260} height={180} coverColor="yellow">
+        <ScratchCard
+          classNames={{
+            root: 'customize-root',
+            mask: 'customize-mask',
+            body: 'customize-body',
+          }}
+          width={260}
+          height={180}
+          coverColor="yellow"
+        >
           <ChildrenElement />
         </ScratchCard>
       </DemoBlock>

@@ -1,6 +1,6 @@
 {
   "name": "scratch-card-react",
-  "version": "1.0.4-alpha",
+  "version": "1.0.5-alpha",
   "description": "scratch-card-react",
   "license": "MIT",
   "module": "dist/index.js",
@@ -42,6 +42,9 @@
       "eslint --fix",
       "prettier --parser=typescript --write"
     ]
+  },
+  "dependencies": {
+    "classnames": "^2.3.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",
