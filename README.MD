@@ -13,10 +13,11 @@ yarn add scratch-card-react
 pnpm i scratch-card-react
 ```
 
-## API
+## 属性
 
 | 属性       | 说明                   | 类型        | 默认值 |
 | ---------- | ---------------------- | ----------- | ------ |
+| classNames | 语义结构化的 className | `{ root?:string, mask?:string, body?:string }` | -      |
 | children   | 刮开梦层显示的底部元素 | `ReactNode` | -      |
 | coverColor | 刮刮卡蒙版的颜色       | `string`    | `#ddd` |
 | coverImg   | 刮刮卡蒙版的图片       | `string \| Promise<any>`    | -      |
