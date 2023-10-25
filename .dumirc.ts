@@ -14,4 +14,6 @@ export default defineConfig({
        width: 200px !important;
     }`,
   ],
+  base: '/scratch-card',
+  publicPath: '/scratch-card',
 });
