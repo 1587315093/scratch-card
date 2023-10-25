@@ -10,10 +10,7 @@ export default defineConfig({
   title: projectName,
   themeConfig: {
     name: projectName,
-    nav: [
-      { title: '介绍', link: '/guide' },
-      { title: '组件', link: '/components/scratch-card' },
-    ],
+    nav: [{ title: '示例', link: '/components/scratch-card' }],
   },
   styles: [
     `.dumi-default-header-left {

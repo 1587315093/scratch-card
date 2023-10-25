@@ -32,7 +32,7 @@ pnpm install scratch-card-react
 $ pnpm install
 
 # develop library by docs demo
-$ pnpm start
+$ pnpm run dev
 
 # build library source code
 $ pnpm run build
