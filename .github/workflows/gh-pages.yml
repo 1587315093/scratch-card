@@ -3,7 +3,7 @@ name: github pages
 on:
   push:
     branches:
-      - master # default branch
+      - master
 
 jobs:
   deploy:
@@ -15,13 +15,13 @@ jobs:
           # 如果配置 themeConfig.lastUpdated 为 false，则不需要添加该参数以加快检出速度
           fetch-depth: 0
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
       - name: Build with dumi
         # 文档编译命令，如果是 react 模板需要修改为 npm run docs:build
         run: npm run build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets._gh_pages_1587 }}
           # 文档目录，如果是 react 模板需要修改为 docs-dist
           publish_dir: ./docs-dist
