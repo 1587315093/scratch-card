@@ -14,7 +14,7 @@
     "deploy": "gh-pages -d dist",
     "dev": "dumi dev",
     "docs:build": "dumi build",
-    "docs:deploy": "dumi build && gh-pages -d docs-dist",
+    "docs:deploy": "gh-pages -d docs-dist",
     "doctor": "father doctor",
     "lint": "npm run lint:es && npm run lint:css",
     "lint:css": "stylelint \"{src,test}/**/*.{css,less}\"",
