@@ -9,7 +9,7 @@ jobs:
         with:
           # 如果配置 themeConfig.lastUpdated 为 false，则不需要添加该参数以加快检出速度
           fetch-depth: 0
-          
+
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
@@ -19,7 +19,7 @@ jobs:
         id: pnpm-install
         uses: pnpm/action-setup@v2.2.4
         with:
-          version: 7
+          version: 7.5.0
           run_install: false
 
       - name: Install dependencies
