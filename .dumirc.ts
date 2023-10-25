@@ -1,7 +1,12 @@
 import { defineConfig } from 'dumi';
 
+const path = '/scratch-card';
+
 export default defineConfig({
+  base: path,
+  publicPath: path,
   outputPath: 'docs-dist',
+  title: 'ScratchCard',
   themeConfig: {
     name: 'ScratchCard',
     nav: [
@@ -14,6 +19,4 @@ export default defineConfig({
        width: 200px !important;
     }`,
   ],
-  base: '/scratch-card/',
-  publicPath: '/scratch-card/',
 });
