@@ -75,5 +75,12 @@
   },
   "authors": [
     "1587315093@qq.com"
-  ]
+  ],
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "react"
+      ]
+    }
+  }
 }
