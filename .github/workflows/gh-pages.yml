@@ -6,12 +6,39 @@ on:
       - master
 
 jobs:
+
+ check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install pnpm
+        id: pnpm-install
+        uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 7.5.0
+          run_install: false
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Lint
+        run: pnpm lint
+
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Build with docs
         run: pnpm docs:build
-      - name: Deploy wth github
+      - name: Deploy to github-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
