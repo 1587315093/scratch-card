@@ -1,22 +1,11 @@
 ---
 hero:
-  title: library
-  description: A react library developed with dumi
+  title: ScratchCard
+  description: Canvas + React 实现的刮刮卡，刮刮乐组件
   actions:
-    - text: Hello
-      link: /
-    - text: World
-      link: /
-features:
-  - title: Hello
-    emoji: 💎
-    description: Put hello description here
-  - title: World
-    emoji: 🌈
-    description: Put world description here
-  - title: '!'
-    emoji: 🚀
-    description: Put ! description here
+    - text: 文档
+      link: /components/scratch-card
+title: ScratchCard
+description: 刮刮卡刮刮乐组件React版
+keywords: [刮刮卡, 刮刮乐, React组件]
 ---
-
-ScratchCard

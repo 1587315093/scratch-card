@@ -8,13 +8,10 @@ export default defineConfig({
   publicPath: projectPath,
   outputPath: 'docs-dist',
   title: projectName,
+  logo: false,
   themeConfig: {
     name: projectName,
-    nav: [{ title: '示例', link: '/components/scratch-card' }],
+    nav: [{ title: '文档', link: '/components/scratch-card' }],
+    footer: false,
   },
-  styles: [
-    `.dumi-default-header-left {
-       width: 200px !important;
-    }`,
-  ],
 });
