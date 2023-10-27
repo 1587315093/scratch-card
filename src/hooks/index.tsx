@@ -9,21 +9,26 @@ type ScratchCardHookProps = Required<
   }
 > & {
   coverImg?: string | Promise<any>;
+  callbackInfo?: {
+    calllback?: () => void;
+    radio?: number;
+  };
 };
 
 const useCardInit = (props: ScratchCardHookProps) => {
-  const { canvasRef, width, height, coverColor, coverImg } = props;
+  const { canvasRef, width, height, coverColor, coverImg, callbackInfo } =
+    props;
   const isScratching = useRef(false);
   const [initDone, setInitDone] = useState(false); // 网络图片加载有延迟，初始化完成在渲染底层dom
 
   useEffect(() => {
-    initCanvas();
+    initCard();
     return () => {
-      terminateCanvas();
+      destroyCard();
     };
   }, []);
 
-  const initCanvas = async () => {
+  const initCard = async () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -56,7 +61,7 @@ const useCardInit = (props: ScratchCardHookProps) => {
     setInitDone(true);
   };
 
-  const terminateCanvas = () => {
+  const destroyCard = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -72,6 +77,17 @@ const useCardInit = (props: ScratchCardHookProps) => {
     canvas.removeEventListener('mouseup', scratchController.bind(null, false));
     canvas.removeEventListener('touchend', scratchController.bind(null, false));
   };
+
+  const clearCard = () => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const context = canvas.getContext('2d');
+    if (!context) return;
+
+    context.clearRect(0, 0, width, height);
+    destroyCard();
+  };
+
   const handleScratch = (e: MouseEvent) => {
     if (!isScratching.current) return;
     e.preventDefault();
@@ -89,12 +105,32 @@ const useCardInit = (props: ScratchCardHookProps) => {
     context.beginPath();
     context.arc(x, y, 20, 0, Math.PI * 2);
     context.fill();
+
+    typeof callbackInfo?.calllback === 'function' && calcCardArea(context);
   };
+
+  const calcCardArea = (context: CanvasRenderingContext2D) => {
+    const cardPixels = context.getImageData(0, 0, width, height);
+    const scratchPixels = [];
+
+    for (let i = 0; i < cardPixels.data.length; i++) {
+      const item = cardPixels.data[i + 3];
+      item === 0 && scratchPixels.push(item);
+    }
+
+    if (
+      scratchPixels.length / cardPixels.data.length >
+      (callbackInfo?.radio || 0.8)
+    ) {
+      callbackInfo?.calllback?.();
+    }
+  };
+
   const scratchController = (scratching: boolean) => {
     isScratching.current = scratching;
   };
 
-  return [isScratching.current, initDone];
+  return [isScratching.current, initDone, clearCard] as const;
 };
 
 export { useCardInit };

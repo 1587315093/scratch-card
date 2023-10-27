@@ -9,5 +9,7 @@ module.exports = {
         variables: false,
       },
     ],
+    '@typescript-eslint/no-unused-expressions': 'off',
+    'react/button-has-type': 'off',
   },
 };

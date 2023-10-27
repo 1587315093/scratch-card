@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import classnames from 'classnames';
 import type { PropsWithChildren } from 'react';
 import { forwardRef, useImperativeHandle, useRef } from 'react';
 import { useCardInit } from '../hooks';
@@ -20,8 +20,18 @@ export type ScratchCardProps = PropsWithChildren<
       mask?: string;
       body?: string;
     };
+    callbackInfo?: {
+      calllback?: () => void;
+      radio?: number;
+    };
   }
 >;
+
+export type ScratchCardRef = {
+  canvasContainer: HTMLCanvasElement;
+  initDone: boolean;
+  clearCard: () => void;
+};
 
 const defaultProps = {
   width: 240,
@@ -29,40 +39,36 @@ const defaultProps = {
   coverColor: '#ddd',
 };
 
-const ScratchCard = forwardRef<unknown, ScratchCardProps>((p, ref) => {
+const ScratchCard = forwardRef<ScratchCardRef, ScratchCardProps>((p, ref) => {
   const props = { ...defaultProps, ...p };
+  const { children, classNames, ...rest } = props;
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const [, initDone] = useCardInit({
+  const [, initDone, clearCard] = useCardInit({
     canvasRef,
-    width: props.width,
-    height: props.height,
-    coverColor: props.coverColor,
-    coverImg: props.coverImg,
+    ...rest,
   });
 
   useImperativeHandle(ref, () => ({
-    canvasContainer: canvasRef.current,
+    canvasContainer: canvasRef.current as HTMLCanvasElement,
     initDone,
+    clearCard,
   }));
 
   return (
     <div
-      className={classNames(classPrefix, props?.classNames?.root)}
+      className={classnames(classPrefix, classNames?.root)}
       style={{ width: props.width, height: props.height }}
     >
       <canvas
         ref={canvasRef}
-        className={classNames(`${classPrefix}-mask`, props.classNames?.mask)}
+        className={classnames(`${classPrefix}-mask`, classNames?.mask)}
       ></canvas>
       <div
-        className={classNames(
-          `${classPrefix}-container`,
-          props.classNames?.body,
-        )}
+        className={classnames(`${classPrefix}-container`, classNames?.body)}
         style={{ width: props.width, height: props.height }}
       >
-        {initDone && props.children}
+        {initDone && children}
       </div>
     </div>
   );
