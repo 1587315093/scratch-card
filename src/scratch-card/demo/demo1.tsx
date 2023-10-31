@@ -1,6 +1,9 @@
 import { ScratchCard } from 'scratch-card-react';
 import { ChildrenElement, DemoBlock } from './DemoCop';
 
+const src =
+  'https://images.unsplash.com/photo-1567945716310-4745a6b7844b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=60';
+
 export default () => {
   return (
     <div>
@@ -22,13 +25,7 @@ export default () => {
         </ScratchCard>
       </DemoBlock>
       <DemoBlock title="设置蒙版为图片">
-        <ScratchCard
-          width={260}
-          height={226}
-          coverImg={
-            'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-          }
-        >
+        <ScratchCard width={300} height={200} coverImg={src}>
           <ChildrenElement />
         </ScratchCard>
       </DemoBlock>

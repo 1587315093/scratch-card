@@ -3,6 +3,9 @@ import { ScratchCard } from 'scratch-card-react';
 import type { ScratchCardRef } from 'scratch-card-react/scratch-card';
 import { ChildrenElement, DemoBlock } from './DemoCop';
 
+const src =
+  'https://images.unsplash.com/photo-1620476214170-1d8080f65cdb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3150&q=80';
+
 export default () => {
   const cardRef = useRef<ScratchCardRef>(null);
 
@@ -26,11 +29,9 @@ export default () => {
       <DemoBlock title="完整功能，支持ref清除蒙层">
         <ScratchCard
           ref={cardRef}
-          width={260}
-          height={226}
-          coverImg={
-            'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-          }
+          width={300}
+          height={200}
+          coverImg={src}
           callbackInfo={{
             radio: 0.8,
             calllback: () => {
