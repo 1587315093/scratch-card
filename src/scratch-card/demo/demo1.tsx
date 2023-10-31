@@ -1,5 +1,4 @@
 import { ScratchCard } from 'scratch-card-react';
-import ReactImg from '../../assets/react.jpeg';
 import { ChildrenElement, DemoBlock } from './DemoCop';
 
 export default () => {
@@ -23,7 +22,13 @@ export default () => {
         </ScratchCard>
       </DemoBlock>
       <DemoBlock title="设置蒙版为图片">
-        <ScratchCard width={260} height={180} coverImg={ReactImg}>
+        <ScratchCard
+          width={260}
+          height={226}
+          coverImg={
+            'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
+          }
+        >
           <ChildrenElement />
         </ScratchCard>
       </DemoBlock>

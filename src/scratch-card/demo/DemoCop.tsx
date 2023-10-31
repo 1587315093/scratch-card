@@ -1,4 +1,4 @@
-import type { FC, ReactNode } from 'react';
+import type { CSSProperties, FC, ReactNode } from 'react';
 
 const DemoBlock: FC<{ children: ReactNode; title: string }> = (props) => {
   return (
@@ -9,7 +9,7 @@ const DemoBlock: FC<{ children: ReactNode; title: string }> = (props) => {
   );
 };
 
-const ChildrenElement = () => (
+const ChildrenElement: FC<{ style?: CSSProperties }> = (props) => (
   <div
     style={{
       width: '100%',
@@ -17,6 +17,7 @@ const ChildrenElement = () => (
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
+      ...props.style,
     }}
   >
     <span>恭喜您，刮中了法拉利5元代金劵</span>

@@ -27,8 +27,10 @@ export default () => {
         <ScratchCard
           ref={cardRef}
           width={260}
-          height={180}
-          coverImg={import('../../assets/react.jpeg')}
+          height={226}
+          coverImg={
+            'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
+          }
           callbackInfo={{
             radio: 0.8,
             calllback: () => {
@@ -36,7 +38,7 @@ export default () => {
             },
           }}
         >
-          <ChildrenElement />
+          <ChildrenElement style={{ backgroundColor: 'red' }} />
         </ScratchCard>
         <button
           style={{
