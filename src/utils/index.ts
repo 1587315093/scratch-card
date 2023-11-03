@@ -8,7 +8,7 @@ export function loadImage(url: string): Promise<HTMLImageElement> {
   });
 }
 
-export async function loadImageUrl(coverImg: any) {
+export async function loadImageUrl(coverImg: Promise<any> | string) {
   if (coverImg instanceof Promise) {
     const res = await coverImg;
     return res.default;
