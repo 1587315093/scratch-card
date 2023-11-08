@@ -6,6 +6,8 @@
 
 ## 使用
 
+欢迎提交 `issue` 与 `pr`~
+
 ```bash
 $ npm install scratch-card-react
 # or
