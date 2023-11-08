@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkscratch_card_react=self.webpackChunkscratch_card_react||[]).push([[935],{3011:function(u,e,_){_.r(e);var m=_(50940),o=_(83657),t=_(76840),c=_(60106),l=_(82528),s=_(19419),h=_(44906),a=_(61701),i=_(50959),d=_(11527);function n(){var r=(0,a.eL)(),E=r.texts;return(0,d.jsx)(a.dY,{children:(0,d.jsx)(d.Fragment,{})})}e.default=n}}]);
