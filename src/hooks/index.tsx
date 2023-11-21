@@ -11,7 +11,7 @@ type ScratchCardHookProps = Required<
   coverImg?: string | Promise<any>;
   callbackInfo?: {
     calllback?: () => void;
-    radio?: number;
+    ratio?: number;
   };
 };
 
@@ -120,7 +120,7 @@ const useCardInit = (props: ScratchCardHookProps) => {
 
     if (
       scratchPixels.length / cardPixels.data.length >
-      (callbackInfo?.radio || 0.8)
+      (callbackInfo?.ratio || 0.8)
     ) {
       callbackInfo?.calllback?.();
     }

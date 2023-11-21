@@ -13,7 +13,7 @@
 | children     | 刮开蒙层显示的底部元素     | `ReactNode`                                    | -      |
 | coverColor   | 刮刮卡蒙版的颜色           | `string`                                       | `#ddd` |
 | coverImg     | 刮刮卡蒙版的图片           | `string \| Promise<any>`                       | -      |
-| callbackInfo | 刮开一定比例触发的回调信息 | `{ callback:()=>void,radio:number }`           | -      |
+| callbackInfo | 刮开一定比例触发的回调信息 | `{ callback:()=>void,ratio:number }`           | -      |
 | width        | 刮刮卡宽度                 | `number`                                       | `240`  |
 | height       | 刮刮卡高度                 | `number`                                       | `120`  |
 

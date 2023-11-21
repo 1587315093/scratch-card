@@ -17,7 +17,7 @@ export default () => {
           height={180}
           coverColor="skyblue"
           callbackInfo={{
-            radio: 0.8,
+            ratio: 0.8,
             calllback: () => {
               alert('scratch done');
             },
@@ -33,7 +33,7 @@ export default () => {
           height={200}
           coverImg={src}
           callbackInfo={{
-            radio: 0.8,
+            ratio: 0.8,
             calllback: () => {
               alert('scratch done');
             },
