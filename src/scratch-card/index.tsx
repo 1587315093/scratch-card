@@ -22,7 +22,7 @@ export type ScratchCardProps = PropsWithChildren<
     };
     callbackInfo?: {
       calllback?: () => void;
-      radio?: number;
+      ratio?: number;
     };
   }
 >;
